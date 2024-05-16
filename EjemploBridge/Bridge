@@ -1,0 +1,65 @@
+// Abstracción
+interface Forma {
+    void dibujar();
+}
+
+// Implementación
+interface Color {
+    void aplicarColor();
+}
+
+// Implementaciones de Color
+class Rojo implements Color {
+    public void aplicarColor() {
+        System.out.println("Aplicando color rojo");
+    }
+}
+
+class Verde implements Color {
+    public void aplicarColor() {
+        System.out.println("Aplicando color verde");
+    }
+}
+
+class Azul implements Color {
+    public void aplicarColor() {
+        System.out.println("Aplicando color azul");
+    }
+}
+
+// Abstracción refinada
+class Cuadrado implements Forma {
+    private Color color;
+
+    public Cuadrado(Color color) {
+        this.color = color;
+    }
+
+    public void dibujar() {
+        System.out.println("Dibujando un cuadrado");
+        color.aplicarColor();
+    }
+}
+
+class Circulo implements Forma {
+    private Color color;
+
+    public Circulo(Color color) {
+        this.color = color;
+    }
+
+    public void dibujar() {
+        System.out.println("Dibujando un círculo");
+        color.aplicarColor();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Forma cuadradoRojo = new Cuadrado(new Rojo());
+        Forma circuloVerde = new Circulo(new Verde());
+
+        cuadradoRojo.dibujar();
+        circuloVerde.dibujar();
+    }
+}
